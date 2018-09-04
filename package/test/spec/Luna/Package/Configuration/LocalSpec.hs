@@ -22,6 +22,9 @@ external-targets:
   output: ../lib
   options:
   - -lfoo
+system-deps:
+- libffi.so.6
+- libc++
 project-version:
   minor: 0
   major: 0
@@ -52,6 +55,7 @@ allFieldsUsedResult = Local.Config
     "This is my package description."
     (Just ["Foo", "Bar", "Baz"])
     (Just [Local.Target "Dep" "gcc" "../lib" ["-lfoo"] Local.BeforeCompilation])
+    (Just ["libffi.so.6", "libc++"])
 
 optionalFieldsOmitted :: ByteString
 optionalFieldsOmitted = [qqStr|
@@ -79,6 +83,7 @@ optionalFieldsOmittedResult = Local.Config
     Local.Library
     "This is a test package."
     "This is my package description."
+    Nothing
     Nothing
     Nothing
 

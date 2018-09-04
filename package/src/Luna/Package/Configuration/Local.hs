@@ -9,8 +9,7 @@ import qualified Data.Yaml          as Yaml
 import Luna.Package.Configuration.License ( License )
 import Luna.Package.Version               ( Version )
 
--- TODO Make this more robust against invalid keys
--- TODO Proper Indentation for the generated yaml
+
 
 ------------------------
 -- === Build Type === --
@@ -102,6 +101,7 @@ instance Yaml.ToJSON ExternalTarget where
 -- === Definition === --
 
 type LunaOption = Text
+type SystemDep  = Text
 
 data Config = Config
     { _author          :: Text
@@ -114,6 +114,7 @@ data Config = Config
     , _description     :: Text
     , _lunaOptions     :: Maybe [LunaOption]
     , _externalTargets :: Maybe [ExternalTarget]
+    , _systemDeps      :: Maybe [Text]
     } deriving (Eq, Generic, Ord, Show)
 makeLenses ''Config
 
@@ -121,7 +122,7 @@ makeLenses ''Config
 -- === Instances === --
 
 instance Default Config where
-    def = Config def def def def def def def def Nothing Nothing
+    def = Config def def def def def def def def Nothing Nothing Nothing
 
 instance Yaml.FromJSON Config where
     parseJSON = Lens.parseYamlStyle
