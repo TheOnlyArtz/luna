@@ -51,6 +51,7 @@ dependencies:
     - prologue
     - safe-exceptions
     - text
+    - typelevel
     - yaml
 
 default-extensions: *luna-extensions
