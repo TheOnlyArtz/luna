@@ -114,7 +114,7 @@ data Config = Config
     , _description     :: Text
     , _lunaOptions     :: Maybe [LunaOption]
     , _externalTargets :: Maybe [ExternalTarget]
-    , _systemDeps      :: Maybe [Text]
+    , _systemDeps      :: Maybe [SystemDep]
     } deriving (Eq, Generic, Ord, Show)
 makeLenses ''Config
 
