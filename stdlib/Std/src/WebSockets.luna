@@ -118,10 +118,10 @@ class WebSocket:
     # # process the incoming stream...
     # conn.close
     # ```
-    def connection host:
+    def connection host path:
         secure = host.startsWith "wss"
         port   = if secure then 443 else 80
-        WebSocketInstance host port "/" secure
+        WebSocketInstance host port path secure
 
     # Create a simple, broadcast server that recieves messages from its clients
     # and can send messages to all of the clients at once.
